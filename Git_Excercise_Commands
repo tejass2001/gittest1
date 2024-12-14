@@ -1,0 +1,292 @@
+labuser@labuser-virtual-machine:~$ git --version
+git version 2.34.1
+labuser@labuser-virtual-machine:~$ mkdir test1
+labuser@labuser-virtual-machine:~$ cd test1
+labuser@labuser-virtual-machine:~/test1$ git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint: 	git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint: 	git branch -m <name>
+Initialized empty Git repository in /home/labuser/test1/.git/
+labuser@labuser-virtual-machine:~/test1$ echo "test1" > test1
+labuser@labuser-virtual-machine:~/test1$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	test1
+
+nothing added to commit but untracked files present (use "git add" to track)
+labuser@labuser-virtual-machine:~/test1$ git add .
+labuser@labuser-virtual-machine:~/test1$ git commit -m "change1"
+[master (root-commit) fbbd1c7] change1
+ 1 file changed, 1 insertion(+)
+ create mode 100644 test1
+labuser@labuser-virtual-machine:~/test1$ git remote add origin https://github.com/tejass2001/gittest1.git
+labuser@labuser-virtual-machine:~/test1$ git remote -v
+origin	https://github.com/tejass2001/gittest1.git (fetch)
+origin	https://github.com/tejass2001/gittest1.git (push)
+labuser@labuser-virtual-machine:~/test1$ git push -u origin master
+Username for 'https://github.com': Tejas
+Password for 'https://Tejas@github.com': 
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 222 bytes | 222.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/tejass2001/gittest1.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+labuser@labuser-virtual-machine:~/test1$ git push -u origin master
+Username for 'https://github.com': Tejas
+Password for 'https://Tejas@github.com': 
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+Everything up-to-date
+labuser@labuser-virtual-machine:~/test1$ ls
+test1
+labuser@labuser-virtual-machine:~/test1$ nano test1
+labuser@labuser-virtual-machine:~/test1$ git add .
+labuser@labuser-virtual-machine:~/test1$ git commit -m "Change2"
+[master 3e9ebf9] Change2
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+labuser@labuser-virtual-machine:~/test1$ git push -u origin master
+Username for 'https://github.com': Tejas
+Password for 'https://Tejas@github.com': 
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Writing objects: 100% (3/3), 251 bytes | 251.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/tejass2001/gittest1.git
+   fbbd1c7..3e9ebf9  master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+labuser@labuser-virtual-machine:~/test1$ git branch
+* master
+labuser@labuser-virtual-machine:~/test1$ git branch devops1
+labuser@labuser-virtual-machine:~/test1$ git checkout devops1
+Switched to branch 'devops1'
+labuser@labuser-virtual-machine:~/test1$ git branch
+* devops1
+  master
+labuser@labuser-virtual-machine:~/test1$ echo "test3" > file1
+labuser@labuser-virtual-machine:~/test1$ echo "test4" > file2
+labuser@labuser-virtual-machine:~/test1$ ls -li
+total 12
+6291483 -rw-rw-r-- 1 labuser labuser 6 Dec 14 01:31 file1
+6291541 -rw-rw-r-- 1 labuser labuser 6 Dec 14 01:31 file2
+6291488 -rw-rw-r-- 1 labuser labuser 6 Dec 14 01:23 test1
+labuser@labuser-virtual-machine:~/test1$ git add .
+labuser@labuser-virtual-machine:~/test1$ git commit -m "change4"
+[devops1 3f3dbe6] change4
+ 2 files changed, 2 insertions(+)
+ create mode 100644 file1
+ create mode 100644 file2
+labuser@labuser-virtual-machine:~/test1$ git push -u devops1
+fatal: 'devops1' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+labuser@labuser-virtual-machine:~/test1$ git push -u origin devops1
+Username for 'https://github.com': Tejas
+Password for 'https://Tejas@github.com': 
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (4/4), 320 bytes | 320.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: 
+remote: Create a pull request for 'devops1' on GitHub by visiting:
+remote:      https://github.com/tejass2001/gittest1/pull/new/devops1
+remote: 
+To https://github.com/tejass2001/gittest1.git
+ * [new branch]      devops1 -> devops1
+Branch 'devops1' set up to track remote branch 'devops1' from 'origin'.
+labuser@labuser-virtual-machine:~/test1$ git branch
+* devops1
+  master
+labuser@labuser-virtual-machine:~/test1$ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+labuser@labuser-virtual-machine:~/test1$ git merge devops1
+Updating 3e9ebf9..3f3dbe6
+Fast-forward
+ file1 | 1 +
+ file2 | 1 +
+ 2 files changed, 2 insertions(+)
+ create mode 100644 file1
+ create mode 100644 file2
+labuser@labuser-virtual-machine:~/test1$ ls -li
+total 12
+6291631 -rw-rw-r-- 1 labuser labuser 6 Dec 14 01:37 file1
+6291632 -rw-rw-r-- 1 labuser labuser 6 Dec 14 01:37 file2
+6291488 -rw-rw-r-- 1 labuser labuser 6 Dec 14 01:23 test1
+labuser@labuser-virtual-machine:~/test1$ git log -p
+commit 3f3dbe6c3478e835b70caa8947f282c31e0d69c4 (HEAD -> master, origin/devops1, devops1)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Sat Dec 14 01:33:27 2024 -0500
+
+    change4
+
+diff --git a/file1 b/file1
+new file mode 100644
+index 0000000..df6b0d2
+--- /dev/null
++++ b/file1
+@@ -0,0 +1 @@
++test3
+diff --git a/file2 b/file2
+new file mode 100644
+index 0000000..d234c5e
+--- /dev/null
++++ b/file2
+@@ -0,0 +1 @@
++test4
+
+commit 3e9ebf94c1ada71c4b3d82ff0158f0dd8f274991 (origin/master)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Sat Dec 14 01:23:46 2024 -0500
+
+    Change2
+
+diff --git a/test1 b/test1
+index a5bce3f..180cf83 100644
+--- a/test1
++++ b/test1
+@@ -1 +1 @@
+-test1
++test2
+
+commit fbbd1c7361ee5d6afa04f68a422584632b191a90
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Sat Dec 14 01:07:31 2024 -0500
+
+    change1
+
+diff --git a/test1 b/test1
+new file mode 100644
+index 0000000..a5bce3f
+--- /dev/null
++++ b/test1
+@@ -0,0 +1 @@
++test1
+(END)
+    Change2
+
+diff --git a/test1 b/test1
+index a5bce3f..180cf83 100644
+--- a/test1
++++ b/test1
+@@ -1 +1 @@
+-test1
++test2
+
+commit fbbd1c7361ee5d6afa04f68a422584632b191a90
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Sat Dec 14 01:07:31 2024 -0500
+
+    change1
+
+diff --git a/test1 b/test1
+new file mode 100644
+index 0000000..a5bce3f
+--- /dev/null
++++ b/test1
+@@ -0,0 +1 @@
++test1
+
+labuser@labuser-virtual-machine:~/test1$ git log --oneline
+3f3dbe6 (HEAD -> master, origin/devops1, devops1) change4
+3e9ebf9 (origin/master) Change2
+fbbd1c7 change1
+labuser@labuser-virtual-machine:~/test1$ cd
+labuser@labuser-virtual-machine:~$ git clone https://github.com/tejass2001/gittest1.git
+Cloning into 'gittest1'...
+remote: Enumerating objects: 10, done.
+remote: Counting objects: 100% (10/10), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 10 (delta 0), reused 10 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (10/10), done.
+labuser@labuser-virtual-machine:~$ ls - li
+ls: cannot access '-': No such file or directory
+ls: cannot access 'li': No such file or directory
+labuser@labuser-virtual-machine:~$ ls -li
+total 52
+6029410 drwxr-xr-x 2 labuser labuser 4096 Sep 12  2023 Desktop
+6029414 drwxr-xr-x 3 labuser labuser 4096 Dec 15  2023 Documents
+6029411 drwxr-xr-x 2 labuser labuser 4096 Dec 18  2023 Downloads
+6036475 -rw-rw-r-- 1 labuser labuser   53 Dec 18  2023 execute.yml
+6291515 drwxrwxr-x 3 labuser labuser 4096 Dec 14 01:48 gittest1
+6029415 drwxr-xr-x 2 labuser labuser 4096 Sep 12  2023 Music
+6029416 drwxr-xr-x 2 labuser labuser 4096 Sep 12  2023 Pictures
+6029413 drwxr-xr-x 2 labuser labuser 4096 Sep 12  2023 Public
+6030259 drwxrwxr-x 2 labuser labuser 4096 Dec 18  2023 repos
+6029322 drwx------ 6 labuser labuser 4096 Dec 15  2023 snap
+6029412 drwxr-xr-x 2 labuser labuser 4096 Sep 12  2023 Templates
+6291460 drwxrwxr-x 3 labuser labuser 4096 Dec 14 01:37 test1
+6029418 drwxr-xr-x 2 labuser labuser 4096 Sep 12  2023 Videos
+labuser@labuser-virtual-machine:~$ cd labtest1
+bash: cd: labtest1: No such file or directory
+labuser@labuser-virtual-machine:~$ cd test1
+labuser@labuser-virtual-machine:~/test1$ ls
+file1  file2  test1
+labuser@labuser-virtual-machine:~/test1$ cd
+labuser@labuser-virtual-machine:~$ mkdir dev1
+labuser@labuser-virtual-machine:~$ cd dev1
+labuser@labuser-virtual-machine:~/dev1$ git pull https://github.com/tejass2001/gittest1.git
+fatal: not a git repository (or any of the parent directories): .git
+labuser@labuser-virtual-machine:~/dev1$ git init .
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint: 	git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint: 	git branch -m <name>
+Initialized empty Git repository in /home/labuser/dev1/.git/
+labuser@labuser-virtual-machine:~/dev1$ git remote -v
+labuser@labuser-virtual-machine:~/dev1$ git pull https://github.com/tejass2001/gittest1.git master
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 6 (delta 0), reused 6 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (6/6), 421 bytes | 140.00 KiB/s, done.
+From https://github.com/tejass2001/gittest1
+ * branch            master     -> FETCH_HEAD
+labuser@labuser-virtual-machine:~/dev1$ git branch
+* master
+labuser@labuser-virtual-machine:~/dev1$ ls -li
+total 4
+6291679 -rw-rw-r-- 1 labuser labuser 6 Dec 14 01:57 test1
+labuser@labuser-virtual-machine:~/dev1$ git branch m1
+labuser@labuser-virtual-machine:~/dev1$ git checkout m1
+Switched to branch 'm1'
+labuser@labuser-virtual-machine:~/dev1$ echo "apple1" > fruit
+labuser@labuser-virtual-machine:~/dev1$ ls
+fruit  test1
+labuser@labuser-virtual-machine:~/dev1$ git checkout m1
+Already on 'm1'
+labuser@labuser-virtual-machine:~/dev1$ ls
+fruit  test1
+labuser@labuser-virtual-machine:~/dev1$ git checkout master
+Switched to branch 'master'
+labuser@labuser-virtual-machine:~/dev1$ ls
+fruit  test1
+labuser@labuser-virtual-machine:~/dev1$ git checkout m1
+Switched to branch 'm1'
+labuser@labuser-virtual-machine:~/dev1$ ls
+fruit  test1
+labuser@labuser-virtual-machine:~/dev1$ git rebase master
+Current branch m1 is up to date.
+labuser@labuser-virtual-machine:~/dev1$ 
+
